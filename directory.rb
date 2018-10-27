@@ -1,14 +1,33 @@
 def input_students
+  months = ["january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december"]
   puts "Please enter the name of the student"
   puts "To finish, just hit return twice"
   students = []
   name = gets.chomp
+  puts "Please enter the student's cohort"
+  cohort = gets.chomp.downcase
+  if months.include?(cohort)
+    cohort = cohort.to_s
+  else
+    cohort = :november
+  end
   puts "Please enter the student's hobbies"
-  hobby = gets.chomp
+  hobbies = gets.chomp
   puts "Please enter the student's height"
-  hght = gets.chomp
+  height = gets.chomp
   while !name.empty? do
-    students << {name: name, cohort: :november, hobbies: hobby, height: hght}
+    students << {name: name, cohort: cohort, hobbies: hobbies, height: height}
     puts "Now we have #{students.count} students"
     puts "Please enter the name of the student"
     name = gets.chomp
@@ -16,9 +35,9 @@ def input_students
       break
     end
     puts "Please enter the student's hobbies"
-    hobby = gets.chomp
+    hobbies = gets.chomp.to_s
     puts "Please enter the student's height"
-    hght = gets.chomp
+    height = gets.chomp
   end
   students
 end
