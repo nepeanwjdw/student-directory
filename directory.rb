@@ -1,19 +1,25 @@
 def input_students
-  puts "Please enter the names of the students"
+  puts "Please enter the name of the student"
   puts "To finish, just hit return twice"
-  # create an empty array
   students = []
-  # get the first name
   name = gets.chomp
-  # while the name is not empty, repear this code
+  puts "Please enter the student's hobbies"
+  hobby = gets.chomp
+  puts "Please enter the student's height"
+  hght = gets.chomp
   while !name.empty? do
-    # add the students hash to the array
-    students << {name: name, cohort: :november}
+    students << {name: name, cohort: :november, hobbies: hobby, height: hght}
     puts "Now we have #{students.count} students"
-    # get another name from the user
+    puts "Please enter the name of the student"
     name = gets.chomp
+    if name.empty?
+      break
+    end
+    puts "Please enter the student's hobbies"
+    hobby = gets.chomp
+    puts "Please enter the student's height"
+    hght = gets.chomp
   end
-  # return the array of students
   students
 end
 
@@ -24,7 +30,7 @@ end
 def print(students)
   i = 0
   while i < students.count do
-    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)"
+    puts "#{students[i][:name]} | #{students[i][:cohort]} cohort | Hobbies: #{students[i][:hobbies]} | Height: #{students[i][:height]}"
     i += 1
   end
 end
@@ -33,7 +39,6 @@ def print_footer(names)
   puts "Overall we have #{names.count} great students"
 end
 
-# nothing happens until we call the method
 students = input_students
 print_header
 print(students)
