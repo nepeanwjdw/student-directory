@@ -30,7 +30,7 @@ end
 def print(students)
   i = 0
   while i < students.count do
-    puts "#{students[i][:name]} | #{students[i][:cohort]} cohort | Hobbies: #{students[i][:hobbies]} | Height: #{students[i][:height]}"
+    puts "#{students[i][:name]} | #{students[i][:cohort]} cohort | Hobbies: #{students[i][:hobbies]} | Height: #{students[i][:height]}".center(80, "-")
     i += 1
   end
 end
