@@ -15,6 +15,7 @@ def input_students
   puts "Please enter the name of the student"
   puts "To finish, just hit return twice"
   students = []
+  s = ""
   name = gets.chomp
   puts "Please enter the student's cohort"
   cohort = gets.chomp.downcase
@@ -29,7 +30,8 @@ def input_students
   height = gets.chomp
   while !name.empty? do
     students << {name: name, cohort: cohort, hobbies: hobbies, height: height}
-    puts "Now we have #{students.count} students"
+    puts "Now we have #{students.count} student" + s
+    s = "s"
     puts "Please enter the name of the student"
     name = gets.chomp
     if name.empty?
