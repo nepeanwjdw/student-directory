@@ -71,6 +71,10 @@ def print_footer(names)
 end
 
 students = input_students
-print_header
-print(students)
-print_footer(students)
+if students.empty?
+  puts "There are no students!"
+else
+  print_header
+  print(students)
+  print_footer(students)
+end
