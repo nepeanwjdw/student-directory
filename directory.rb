@@ -1,5 +1,4 @@
-def input_students
-  months = ["january",
+@months = ["january",
     "february",
     "march",
     "april",
@@ -11,14 +10,16 @@ def input_students
     "october",
     "november",
     "december"]
+
+def input_students
   puts "Please enter the name of the student"
   puts "To finish, just hit return twice"
   students = []
   name = gets.chomp
   puts "Please enter the student's cohort"
   cohort = gets.chomp.downcase
-  if months.include?(cohort)
-    cohort = cohort.to_s
+  if @months.include?(cohort)
+    cohort = cohort.to_sym
   else
     cohort = :november
   end
@@ -34,8 +35,15 @@ def input_students
     if name.empty?
       break
     end
+    puts "Please enter the student's cohort"
+    cohort = gets.chomp.downcase
+    if @months.include?(cohort)
+      cohort = cohort.to_sym
+    else
+      cohort = :november
+    end
     puts "Please enter the student's hobbies"
-    hobbies = gets.chomp.to_s
+    hobbies = gets.chomp
     puts "Please enter the student's height"
     height = gets.chomp
   end
@@ -47,10 +55,12 @@ def print_header
 end
 
 def print(students)
-  i = 0
-  while i < students.count do
-    puts "#{students[i][:name]} | #{students[i][:cohort]} cohort | Hobbies: #{students[i][:hobbies]} | Height: #{students[i][:height]}".center(80, "-")
-    i += 1
+  @months.each do |month|
+    students.each do |student|
+      if student[:cohort].to_s == month
+        puts "#{student[:cohort].capitalize} cohort: #{student[:name]} | Hobbies: #{student[:hobbies]} | Height: #{student[:height]}"
+      end
+    end
   end
 end
 
